@@ -1,0 +1,312 @@
+
+@font-face {
+  font-family: 'Pixel';
+  src: url(Font/pixel-coleco.otf);
+}
+@font-face {
+  font-family: 'Atari';
+  src: url(Font/AtariClassicChunky.ttf);
+}
+* {
+  pointer-events: all !important;
+}
+body {
+    background-color: #c6f4fe;
+    margin: 0;
+    padding: 0;
+    opacity: 100%;
+    font-family: 'Pixel', monospace;
+    overflow: hidden;
+  }
+#bird{
+  background-image: url(Asset/bird.png);
+  width: 300px;
+  height: 300px;
+  z-index: 10;
+  background-color: transparent;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  visibility: visible;
+  bottom: 25%; 
+   position: absolute;
+   left: 25vw;
+   transform: rotate(-30deg);
+}
+
+  .player {
+    position: absolute;
+    bottom: 12%;
+    margin-top: -30px;
+    width: 190px;
+    height: 190px;
+    background-color: transparent;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    left: 20px;
+    }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #heading {
+    font-size: 10vh;
+    position: absolute;
+    bottom: 70%;
+    justify-content: center;
+    text-align: center;
+    visibility: visible;
+    font-weight: bold;
+
+  }
+
+  #gameOver {
+    font-family: 'Atari';
+    position: absolute;
+    font-size: 10vh;
+    bottom: 60%;
+    justify-content: center;
+    text-align: center;
+    visibility: hidden;
+  }
+  
+  #inst {
+    position: absolute;
+    font-size: 4vh;
+    bottom: 60%;
+    justify-content: center;
+    text-align: center;
+    visibility: visible;
+  }
+
+  .cloud1{
+    position: absolute;
+    top : 0vh;
+    left: 0;
+    width: 1080px;
+    height: 80vh;
+    bottom: 0;
+    background-image: url(Asset/Cloud-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1;
+  }
+
+  .cloud2{
+    position: absolute;
+    top : 0vh;
+    left: 100%;
+    width: 1080px;
+    height: 75vh;
+    bottom: 0;
+    background-image: url(Asset/Cloud-2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    z-index: -1;
+  }
+
+  .cloud3{
+    position: absolute;
+    top : 0vh;
+    left: 200%;
+    width: 1080px;
+    height: 80vh;
+    bottom: 0;
+    background-image: url(Asset/Cloud-3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    z-index: -2;
+  }
+
+  .background1 {
+    position: absolute;
+    bottom: 0;
+    width: 3766px;
+    height: 950px;
+    left: 0;
+    background-image: url(Asset/Background.png);
+    z-index: -2;
+  }
+
+  .background2 {
+    bottom: 0;
+    position: absolute;
+    width: 3766px;
+    height: 950px;
+    left: 3766px;
+    background-image: url(Asset/Background.png);
+    z-index: -2;
+  }
+
+/* Obstacle (JS creates it by adding it to HTML)*/
+.obstacle {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  bottom: 7%;
+  background: transparent;
+  background-image: url(Asset/rock-2.png);
+  background-size: contain;
+}
+
+.obstacle1 {
+  position: absolute;
+  width: 170px;
+  height: 170px; 
+  bottom: 17%;
+  background: transparent;
+  background-image: url(Asset/bird-1.png);
+  background-size: contain;
+  animation: flyobstaclemove 0.4s infinite none;
+}
+@keyframes flyobstaclemove {
+  25%{
+    background-image: url(Asset/bird-2.png);
+  }
+  50%{
+    background-image: url(Asset/bird-3.png);
+  }
+  70%{
+    background-image: url(Asset/bird-1.png);
+  }
+}
+
+/* A parent div controlling both score and highscore */
+.scores {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  text-align: right;
+  width: 90%;
+  font-size: 6vh;
+}
+
+#highScore {
+  font-size: 5vh;
+}
+
+/* Settings for responsiveness */
+@media screen and (min-height: 770px) {
+
+  .background1{
+    height: 960px;
+  }
+  .background2{
+    height: 960px;
+  }
+  .player {
+    width:200px;
+    height:200px;
+    bottom: 12% ;
+  }
+ 
+  .obstacle 
+  {
+    width:170px;
+    height:170px;
+    bottom: 8%;
+ 
+  }
+  .obstacle1 
+  {
+    width:170px;
+    height:170px;
+    bottom: 17%;
+ 
+  }
+  .cloud1 , .cloud2, .cloud3{
+    height: 85vh;
+    width: 1100px;
+  }
+ 
+ }
+@media screen and (max-height: 700px) {
+  .background1{
+    height: 940px;
+  }
+  .background2{
+    height: 940px;
+  }
+ .player {
+
+   bottom: 8% ;
+ }
+ #bird{
+  width:190px;
+  height:190px;
+   position: absolute;
+   left: 35vw;
+   transform: rotate(-40deg);
+}
+ .obstacle 
+ {
+   width:170px;
+   height:170px;
+   bottom: 8%;
+
+ }
+ .obstacle1 
+ {
+   width:160px;
+   height:160px;
+   bottom: 17%;
+
+ }
+ .cloud1 , .cloud2, .cloud3{
+   height: 85vh;
+ }
+
+}
+@media screen and (max-width: 850px) {
+   #heading {
+    font-size: 8vh;
+    bottom: 75%;
+    padding: 20px;
+  }
+
+  #gameOver {
+    font-size: 9vh;
+    line-height: 20vw;
+    bottom: 55%;
+  }
+  #inst {
+    bottom: 60% ;
+  }
+    #highScore {
+      font-size: 4vh;
+  }
+
+  .scores {
+    font-size: 5vh;
+  }
+
+  .player {
+    left: -18px;
+    bottom: 14%;
+  }
+
+  .obstacle 
+  {
+    width:170px;
+    height:170px;
+    bottom: 8%;
+
+  }
+  .obstacle1 
+  {
+    width:150px;
+    height:150px;
+    bottom: 16%;
+
+  }
+  .cloud1 , .cloud2, .cloud3{
+    height: 85vh;
+  }
+
+}
